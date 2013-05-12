@@ -1,5 +1,7 @@
 package me.nopresnik.plugins.cmod;
 
+import java.util.Random;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,9 +17,34 @@ public class PlayerChat implements Listener {
 
     @EventHandler
     public void onAsyncPlayerChat(AsyncPlayerChatEvent event) {
-        String m = event.getMessage();
+
         Player p = event.getPlayer();
-        //Just for now
-        event.setFormat("<" + p.getName() + "> " + m);
+        String m = event.getMessage();
+
+        Random object = new Random();
+        int color;
+
+        for (int counter = 1; counter <= 1; counter++) {
+            color = 1 + object.nextInt(6);
+
+            if (color == 1) {
+                event.setFormat("<" + ChatColor.RED + p.getName() + ChatColor.RESET + "> " + m);
+            }
+            if (color == 2) {
+                event.setFormat("<" + ChatColor.BLUE + p.getName() + ChatColor.RESET + "> " + m);
+            }
+            if (color == 3) {
+                event.setFormat("<" + ChatColor.DARK_GREEN + p.getName() + ChatColor.RESET + "> " + m);
+            }
+            if (color == 4) {
+                event.setFormat("<" + ChatColor.YELLOW + p.getName() + ChatColor.RESET + "> " + m);
+            }
+            if (color == 5) {
+                event.setFormat("<" + ChatColor.AQUA + p.getName() + ChatColor.RESET + "> " + m);
+            }
+            if (color == 6) {
+                event.setFormat("<" + ChatColor.GRAY + p.getName() + ChatColor.RESET + "> " + m);
+            }
+        }
     }
 }

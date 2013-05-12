@@ -13,5 +13,6 @@ public class CMod extends JavaPlugin implements Listener {
     public void onEnable() {
         getServer().getPluginManager().registerEvents(pp, this);
         getServer().getPluginManager().registerEvents(pi, this);
+        getServer().getPluginManager().registerEvents(pc, this);
     }
 }
