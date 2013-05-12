@@ -7,6 +7,7 @@ public class CMod extends JavaPlugin implements Listener {
 
     public PlayerJoin pj = new PlayerJoin(this);
 
+    @Override
     public void onEnable() {
         getServer().getPluginManager().registerEvents(pj, this);
     }
