@@ -5,10 +5,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class CMod extends JavaPlugin implements Listener {
 
-    public PlayerJoin pj = new PlayerJoin(this);
+    public PlayerPart pp = new PlayerPart(this);
 
     @Override
     public void onEnable() {
-        getServer().getPluginManager().registerEvents(pj, this);
+        getServer().getPluginManager().registerEvents(pp, this);
     }
 }
