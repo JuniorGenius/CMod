@@ -1,7 +1,6 @@
 author: nopresnik
 database: false
 description: Makes the creative server work.
-generator: http://dinnerbone.com/minecraft/tools/pluginator/
 main: me.nopresnik.plugins.cmod.CMod
 name: CMod
 startup: postworld
