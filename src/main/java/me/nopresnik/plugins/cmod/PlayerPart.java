@@ -19,18 +19,18 @@ public class PlayerPart implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        event.setJoinMessage(ChatColor.RED + "[PlayerJoin] " + ChatColor.DARK_GRAY + player.getName());
+        event.setJoinMessage(ChatColor.RED + "[PlayerJoin] " + ChatColor.GRAY + player.getName());
     }
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        event.setQuitMessage(ChatColor.RED + "[PlayerQuit] " + ChatColor.DARK_GRAY + player.getName());
+        event.setQuitMessage(ChatColor.RED + "[PlayerQuit] " + ChatColor.GRAY + player.getName());
     }
 
     @EventHandler
     public void onPlayerKick(PlayerKickEvent event) {
         Player player = event.getPlayer();
-        event.setLeaveMessage(ChatColor.RED + "[PlayerQuit] " + ChatColor.DARK_GRAY + player.getName());
+        event.setLeaveMessage(ChatColor.RED + "[PlayerQuit] " + ChatColor.GRAY + player.getName());
     }
 }

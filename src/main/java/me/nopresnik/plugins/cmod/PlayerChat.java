@@ -18,32 +18,32 @@ public class PlayerChat implements Listener {
     @EventHandler
     public void onAsyncPlayerChat(AsyncPlayerChatEvent event) {
 
-        Player p = event.getPlayer();
+        Player player = event.getPlayer();
         String m = event.getMessage();
+        String p = player.getName();
 
         Random object = new Random();
         int color;
-
         for (int counter = 1; counter <= 1; counter++) {
             color = 1 + object.nextInt(6);
 
             if (color == 1) {
-                event.setFormat("<" + ChatColor.RED + p.getName() + ChatColor.RESET + "> " + m);
+                event.setFormat("<" + ChatColor.RED + p + ChatColor.RESET + "> " + m);
             }
             if (color == 2) {
-                event.setFormat("<" + ChatColor.BLUE + p.getName() + ChatColor.RESET + "> " + m);
+                event.setFormat("<" + ChatColor.BLUE + p + ChatColor.RESET + "> " + m);
             }
             if (color == 3) {
-                event.setFormat("<" + ChatColor.DARK_GREEN + p.getName() + ChatColor.RESET + "> " + m);
+                event.setFormat("<" + ChatColor.DARK_GREEN + p + ChatColor.RESET + "> " + m);
             }
             if (color == 4) {
-                event.setFormat("<" + ChatColor.YELLOW + p.getName() + ChatColor.RESET + "> " + m);
+                event.setFormat("<" + ChatColor.YELLOW + p + ChatColor.RESET + "> " + m);
             }
             if (color == 5) {
-                event.setFormat("<" + ChatColor.AQUA + p.getName() + ChatColor.RESET + "> " + m);
+                event.setFormat("<" + ChatColor.AQUA + p + ChatColor.RESET + "> " + m);
             }
             if (color == 6) {
-                event.setFormat("<" + ChatColor.GRAY + p.getName() + ChatColor.RESET + "> " + m);
+                event.setFormat("<" + ChatColor.GRAY + p + ChatColor.RESET + "> " + m);
             }
         }
     }
