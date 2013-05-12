@@ -1,5 +1,6 @@
 package me.nopresnik.plugins.cmod;
 
-public class CommandMessage {
-    
+import org.bukkit.command.CommandExecutor;
+
+public class CommandMessage implements {
 }
