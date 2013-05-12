@@ -7,6 +7,7 @@ public class CMod extends JavaPlugin implements Listener {
 
     public PlayerPart pp = new PlayerPart(this);
     public PlayerItem pi = new PlayerItem(this);
+    public PlayerChat pc = new PlayerChat(this);
 
     @Override
     public void onEnable() {
