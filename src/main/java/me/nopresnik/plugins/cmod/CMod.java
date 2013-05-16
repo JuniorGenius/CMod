@@ -38,6 +38,8 @@ public class CMod extends JavaPlugin implements Listener {
                         }
                     }
                 }
+                sender.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "You must include a player. " + ChatColor.DARK_GREEN + "/mute <player>");
+                return true;
             }
 
             if (cmd.getName().equalsIgnoreCase("unmute")) {
@@ -55,9 +57,15 @@ public class CMod extends JavaPlugin implements Listener {
                             sender.sendMessage(ChatColor.GRAY + "     Make sure you're typing the full name");
                             return true;
                         }
+                    } else {
+                        sender.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "The player \"" + ChatColor.YELLOW + args[0].toString() + ChatColor.GRAY + "\" is not online.");
+                        return true;
                     }
                 }
+                sender.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "You must include a player. " + ChatColor.DARK_GREEN + "/unmute <player>");
+                return true;
             }
+
         }
         return false;
     }
