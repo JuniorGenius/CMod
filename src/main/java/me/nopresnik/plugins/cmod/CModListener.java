@@ -23,8 +23,14 @@ public class CModListener implements Listener {
 
     @EventHandler
     public void onAsyncPlayerChat(AsyncPlayerChatEvent event) {
-
+        
         Player player = event.getPlayer();
+        
+        if(plugin.mutedUsers.contains(player.getName().toLowerCase())) {
+            event.setCancelled(true);
+            player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "You're not permitted to talk while muted.");
+        }
+
         String m = event.getMessage();
         String p = player.getName();
 

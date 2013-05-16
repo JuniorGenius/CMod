@@ -5,3 +5,15 @@ main: me.nopresnik.plugins.cmod.CMod
 name: CMod
 startup: postworld
 version: '1.0'
+
+commands:
+  mute:
+    description: Mute a player
+    permission: CMod.mute
+    usage: |
+           /mute <player>
+  unmute:
+    description: Unmute a player
+    permission: CMod.mute
+    usage: |
+           /unmute <player>
