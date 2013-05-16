@@ -23,12 +23,26 @@ public class CModListener implements Listener {
 
     @EventHandler
     public void onAsyncPlayerChat(AsyncPlayerChatEvent event) {
-        
+
         Player player = event.getPlayer();
-        
-        if(plugin.mutedUsers.contains(player.getName().toLowerCase())) {
+        String message = event.getMessage();
+
+        if (plugin.mutedUsers.contains(player.getName().toLowerCase())) {
             event.setCancelled(true);
             player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "You're not permitted to talk while muted.");
+            plugin.log.info("Blocked Message: " + "<" + event.getPlayer().getName() + "> " + event.getMessage());
+        }
+
+        int upperCount = 0;
+        for (int i = 0; i < message.length(); i++) {
+            if (Character.isUpperCase(message.charAt(i))) {
+                upperCount++;
+            }
+        }
+
+        if ((upperCount > message.length() / 2) && message.length() > 8) {
+            player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Please do not type in all caps.");
+            event.setCancelled(true);
         }
 
         String m = event.getMessage();

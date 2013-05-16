@@ -2,6 +2,7 @@ package me.nopresnik.plugins.cmod;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import org.bukkit.ChatColor;
 
 import org.bukkit.command.Command;
@@ -12,6 +13,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class CMod extends JavaPlugin implements Listener {
 
+    Logger log = Logger.getLogger("Minecraft");
+    
     public List<String> mutedUsers = new ArrayList<String>();
     public CModListener listener = new CModListener(this);
 
