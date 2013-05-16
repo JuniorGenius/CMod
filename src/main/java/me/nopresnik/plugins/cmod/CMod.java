@@ -42,14 +42,19 @@ public class CMod extends JavaPlugin implements Listener {
 
             if (cmd.getName().equalsIgnoreCase("unmute")) {
                 if (args.length == 1) {
-                    String target = args[0];
-                    Player player = getServer().getPlayer(args[0]);
+                    Player target = getServer().getPlayer(args[0]);
                     if (target != null) {
-                        String targetName = target.toLowerCase();
-                        removeMuteUser(targetName);
-                        sender.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "You have unmuted " + ChatColor.BLUE + player.getName());
-                        player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "You have been unmuted by " + ChatColor.BLUE + sender.getName());
-                        return true;
+                        if (mutedUsers.contains(args[0])) {
+                            String targetName = target.getName().toLowerCase();
+                            removeMuteUser(targetName);
+                            sender.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "You have unmuted " + ChatColor.BLUE + target.getName());
+                            target.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "You have been unmuted by " + ChatColor.BLUE + sender.getName());
+                            return true;
+                        } else {
+                            sender.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "The player \"" + ChatColor.YELLOW + args[0].toString() + ChatColor.GRAY + "\" is not muted");
+                            sender.sendMessage(ChatColor.GRAY + "     Make sure you're typing the full name");
+                            return true;
+                        }
                     }
                 }
             }
