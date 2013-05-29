@@ -2,13 +2,19 @@ package me.nopresnik.plugins.cmod;
 
 import java.util.Random;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -103,4 +109,22 @@ public class CModListener implements Listener {
             event.setCancelled(true);
         }
     }
+
+    /*@EventHandler
+    public void playerInteract(PlayerInteractEvent event) {
+        if (event.getPlayer().hasPermission("CMod.trusted")) {
+            Block b = event.getClickedBlock();
+            if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+                b.setType(Material.AIR);
+                b.getRelative(BlockFace.NORTH).setType(Material.AIR);
+                b.getRelative(BlockFace.NORTH_EAST).setType(Material.AIR);
+                b.getRelative(BlockFace.NORTH_WEST).setType(Material.AIR);
+                b.getRelative(BlockFace.SOUTH).setType(Material.AIR);
+                b.getRelative(BlockFace.SOUTH_EAST).setType(Material.AIR);
+                b.getRelative(BlockFace.SOUTH_WEST).setType(Material.AIR);
+                b.getRelative(BlockFace.EAST).setType(Material.AIR);
+                b.getRelative(BlockFace.WEST).setType(Material.AIR);;
+            }
+        }
+    }*/
 }
