@@ -44,34 +44,8 @@ public class CModListener implements Listener {
                         player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Please do not type in all caps.");
                         event.setCancelled(true);
                 }
-
-                String m = event.getMessage();
-                String p = player.getName();
-
-                Random object = new Random();
-                int color;
-                for (int counter = 1; counter <= 1; counter++) {
-                        color = 1 + object.nextInt(6);
-
-                        if (color == 1) {
-                                event.setFormat("<" + ChatColor.RED + p + ChatColor.RESET + "> " + m);
-                        }
-                        if (color == 2) {
-                                event.setFormat("<" + ChatColor.BLUE + p + ChatColor.RESET + "> " + m);
-                        }
-                        if (color == 3) {
-                                event.setFormat("<" + ChatColor.DARK_GREEN + p + ChatColor.RESET + "> " + m);
-                        }
-                        if (color == 4) {
-                                event.setFormat("<" + ChatColor.YELLOW + p + ChatColor.RESET + "> " + m);
-                        }
-                        if (color == 5) {
-                                event.setFormat("<" + ChatColor.AQUA + p + ChatColor.RESET + "> " + m);
-                        }
-                        if (color == 6) {
-                                event.setFormat("<" + ChatColor.GRAY + p + ChatColor.RESET + "> " + m);
-                        }
-                }
+                
+                event.setFormat("<" + player.getDisplayName() + ChatColor.WHITE + "> " + message);
         }
 
         @EventHandler
@@ -83,6 +57,37 @@ public class CModListener implements Listener {
         public void onPlayerJoin(PlayerJoinEvent event) {
                 Player player = event.getPlayer();
                 event.setJoinMessage(ChatColor.RED + "[PlayerJoin] " + ChatColor.GRAY + player.getName());
+                
+                Random object = new Random();
+                int color;
+                for (int counter = 1; counter <= 1; counter++) {
+                        color = 1 + object.nextInt(6);
+
+                        if (color == 1) {
+                                player.setDisplayName(ChatColor.RED + player.getName());
+                                player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Your chat name is now " + ChatColor.RED + "red" + ChatColor.GRAY + "!");
+                        }
+                        if (color == 2) {
+                                player.setDisplayName(ChatColor.BLUE + player.getName());
+                                player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Your chat name is now " + ChatColor.BLUE + "blue" + ChatColor.GRAY + "!");
+                        }
+                        if (color == 3) {
+                                player.setDisplayName(ChatColor.DARK_GREEN + player.getName());
+                                player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Your chat name is now " + ChatColor.DARK_GREEN + "green" + ChatColor.GRAY + "!");
+                        }
+                        if (color == 4) {
+                                player.setDisplayName(ChatColor.YELLOW + player.getName());
+                                player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Your chat name is now " + ChatColor.YELLOW + "yellow" + ChatColor.GRAY + "!");
+                        }
+                        if (color == 5) {
+                                player.setDisplayName(ChatColor.AQUA + player.getName());
+                                player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Your chat name is now " + ChatColor.AQUA + "aqua" + ChatColor.GRAY + "!");
+                        }
+                        if (color == 6) {
+                                player.setDisplayName(ChatColor.GRAY + player.getName());
+                                player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Your chat name is now gray!");
+                        }
+                }
         }
 
         @EventHandler
