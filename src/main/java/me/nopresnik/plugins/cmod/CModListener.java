@@ -13,77 +13,93 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class CModListener implements Listener {
+public class CModListener implements Listener
+{
 
         public final CMod plugin;
 
-        CModListener(CMod instance) {
+        CModListener(CMod instance)
+        {
                 plugin = instance;
         }
 
         @EventHandler
-        public void onAsyncPlayerChat(AsyncPlayerChatEvent event) {
+        public void onAsyncPlayerChat(AsyncPlayerChatEvent event)
+        {
 
                 Player player = event.getPlayer();
                 String message = event.getMessage();
 
-                if (plugin.mutedUsers.contains(player.getName().toLowerCase())) {
+                if (plugin.mutedUsers.contains(player.getName().toLowerCase()))
+                {
                         event.setCancelled(true);
                         player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "You're not permitted to talk while muted.");
                         plugin.log.info("Blocked Message: " + "<" + event.getPlayer().getName() + "> " + event.getMessage());
                 }
 
                 int upperCount = 0;
-                for (int i = 0; i < message.length(); i++) {
-                        if (Character.isUpperCase(message.charAt(i))) {
+                for (int i = 0; i < message.length(); i++)
+                {
+                        if (Character.isUpperCase(message.charAt(i)))
+                        {
                                 upperCount++;
                         }
                 }
 
-                if ((upperCount > message.length() / 2) && message.length() > 8) {
+                if ((upperCount > message.length() / 2) && message.length() > 8)
+                {
                         player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Please do not type in all caps.");
                         event.setCancelled(true);
                 }
-                
+
                 event.setFormat("<" + player.getDisplayName() + ChatColor.WHITE + "> " + message);
         }
 
         @EventHandler
-        public void onItemSpawn(ItemSpawnEvent event) {
+        public void onItemSpawn(ItemSpawnEvent event)
+        {
                 event.setCancelled(true);
         }
 
         @EventHandler
-        public void onPlayerJoin(PlayerJoinEvent event) {
+        public void onPlayerJoin(PlayerJoinEvent event)
+        {
                 Player player = event.getPlayer();
                 event.setJoinMessage(ChatColor.RED + "[PlayerJoin] " + ChatColor.GRAY + player.getName());
-                
+
                 Random object = new Random();
                 int color;
-                for (int counter = 1; counter <= 1; counter++) {
+                for (int counter = 1; counter <= 1; counter++)
+                {
                         color = 1 + object.nextInt(6);
 
-                        if (color == 1) {
+                        if (color == 1)
+                        {
                                 player.setDisplayName(ChatColor.RED + player.getName());
                                 player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Your chat name is now " + ChatColor.RED + "red" + ChatColor.GRAY + "!");
                         }
-                        if (color == 2) {
+                        if (color == 2)
+                        {
                                 player.setDisplayName(ChatColor.BLUE + player.getName());
                                 player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Your chat name is now " + ChatColor.BLUE + "blue" + ChatColor.GRAY + "!");
                         }
-                        if (color == 3) {
+                        if (color == 3)
+                        {
                                 player.setDisplayName(ChatColor.DARK_GREEN + player.getName());
                                 player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Your chat name is now " + ChatColor.DARK_GREEN + "green" + ChatColor.GRAY + "!");
                         }
-                        if (color == 4) {
+                        if (color == 4)
+                        {
                                 player.setDisplayName(ChatColor.YELLOW + player.getName());
                                 player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Your chat name is now " + ChatColor.YELLOW + "yellow" + ChatColor.GRAY + "!");
                         }
-                        if (color == 5) {
+                        if (color == 5)
+                        {
                                 player.setDisplayName(ChatColor.AQUA + player.getName());
                                 player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Your chat name is now " + ChatColor.AQUA + "aqua" + ChatColor.GRAY + "!");
                         }
-                        if (color == 6) {
+                        if (color == 6)
+                        {
                                 player.setDisplayName(ChatColor.GRAY + player.getName());
                                 player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Your chat name is now gray!");
                         }
@@ -91,20 +107,24 @@ public class CModListener implements Listener {
         }
 
         @EventHandler
-        public void onPlayerQuit(PlayerQuitEvent event) {
+        public void onPlayerQuit(PlayerQuitEvent event)
+        {
                 Player player = event.getPlayer();
                 event.setQuitMessage(ChatColor.RED + "[PlayerQuit] " + ChatColor.GRAY + player.getName());
         }
 
         @EventHandler
-        public void onPlayerKick(PlayerKickEvent event) {
+        public void onPlayerKick(PlayerKickEvent event)
+        {
                 Player player = event.getPlayer();
                 event.setLeaveMessage(ChatColor.RED + "[PlayerQuit] " + ChatColor.GRAY + player.getName());
         }
 
         @EventHandler
-        public void onWitherSpawn(CreatureSpawnEvent event) {
-                if ((event.getEntityType() == EntityType.WITHER) && (event.getSpawnReason() == CreatureSpawnEvent.SpawnReason.BUILD_WITHER)) {
+        public void onWitherSpawn(CreatureSpawnEvent event)
+        {
+                if ((event.getEntityType() == EntityType.WITHER) && (event.getSpawnReason() == CreatureSpawnEvent.SpawnReason.BUILD_WITHER))
+                {
                         event.setCancelled(true);
                 }
         }

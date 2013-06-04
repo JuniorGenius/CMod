@@ -17,3 +17,7 @@ commands:
     permission: CMod.mute
     usage: |
            /unmute <player>
+  colour:
+    description: Reset your chat colour
+    usage: |
+           /colour
