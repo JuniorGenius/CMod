@@ -28,6 +28,7 @@ public class CModListener implements Listener {
 
         Player player = event.getPlayer();
         String message = event.getMessage();
+        message = message.replaceAll("%", "%%");
 
         if (plugin.mutedUsers.contains(player.getName().toLowerCase())) {
             event.setCancelled(true);
