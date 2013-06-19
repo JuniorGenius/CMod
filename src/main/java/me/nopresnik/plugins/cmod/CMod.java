@@ -62,6 +62,48 @@ public class CMod extends JavaPlugin implements Listener {
                 }
             }
             return true;
+        if (cmd.getName().equalsIgnoreCase("colour")) {
+            if (args.length == 1) {
+                if (target != null) {
+    				String color = null;
+					color = color.toLowerCase();
+					if (color == red) {
+						player.setDisplayName(ChatColor.RED + player.getName());
+						player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Your chat name is now " + ChatColor.RED + "red" + ChatColor.GRAY + "!");
+					}
+					else if (color == blue) {
+						player.setDisplayName(ChatColor.BLUE + player.getName());
+						player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Your chat name is now " + ChatColor.BLUE + "blue" + ChatColor.GRAY + "!");
+					}
+					else if (color == green) {
+						player.setDisplayName(ChatColor.DARK_GREEN + player.getName());
+						player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Your chat name is now " + ChatColor.DARK_GREEN + "green" + ChatColor.GRAY + "!");
+					}
+					else if (color == yellow) {
+						player.setDisplayName(ChatColor.YELLOW + player.getName());
+						player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Your chat name is now " + ChatColor.YELLOW + "yellow" + ChatColor.GRAY + "!");
+					}
+					else if (color == aqua) {
+						player.setDisplayName(ChatColor.AQUA + player.getName());
+						player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Your chat name is now " + ChatColor.AQUA + "aqua" + ChatColor.GRAY + "!");
+					}
+					else if (color == gray) {
+						player.setDisplayName(ChatColor.GRAY + player.getName());
+						player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Your chat name is now gray!");
+					}
+					else {
+					    player.sendMessage(ChatColor.RED + "Usage:");
+					    player.sendMessage(ChatColor.RED + "/color <color>");
+					    player.sendMessage(ChatColor.RED + "Available colors: red, blue, green, yellow, aqua, gray.");
+					}
+                }
+            }
+            else if (args.length > 1 || args.length < 1) {
+                player.sendMessage(ChatColor.RED + "Usage:");
+				player.sendMessage(ChatColor.RED + "/color <color>");
+				player.sendMessage(ChatColor.RED + "Available colors: red, blue, darkgreen, yellow, aqua, gray.");
+            }
+            return true;
         }
 
         if (sender.hasPermission("CMod.mod") || sender.isOp()) {
