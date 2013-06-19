@@ -44,8 +44,13 @@ public class CModListener implements Listener {
         }
 
         if ((upperCount > message.length() / 2) && message.length() > 8) {
-            message = message.substring(0,1).toUpperCase();
-            message = message.substring(1).toLowerCase();
+            String messageFirst = null;
+            String messageLast = null;
+            messageFirst = message.substring(0,1);
+            messageFirst = messageFirst.toUpperCase();
+            messageLast = message.substring(1);
+            messageLast = messageLast.toLowerCase();
+            return (messageFirst + messageLast);
             player.sendMessage(ChatColor.RED + "[C] " + ChatColor.GRAY + "Please do not type in all caps.");
             //event.setCancelled(true);
         }
